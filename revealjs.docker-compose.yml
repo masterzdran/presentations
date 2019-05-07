@@ -1,0 +1,12 @@
+#------------------------------------------------------------------------------
+# Web Slide Presentations Infrastructure
+# ... because I'm a developer and I too lazy for powerpoint.
+#------------------------------------------------------------------------------
+revealjs:
+  image: agiled/reveal.js-docker
+  container_name: PresentationsServer
+  ports:
+    - "9800:8000"
+    - "35729:35729"
+  volumes:
+   - ./presentations:/revealjs/presentations
