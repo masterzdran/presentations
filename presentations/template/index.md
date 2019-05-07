@@ -1,4 +1,7 @@
-<section data-state="no-title-footer">
+<section data-state="no-title-footer" >
+
+# Code Quality
+
 ---
 # Page 1
 ## AKA <!-- .element: class="fragment" data-fragment-index="2" -->

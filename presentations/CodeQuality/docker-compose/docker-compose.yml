@@ -1,0 +1,59 @@
+version: '3'
+#---------------
+# NETWORK
+#---------------
+networks:
+  CI-Network:
+    driver: bridge
+
+#---------------
+# VOLUMES
+#---------------
+volumes:
+  sonarqube-volume:
+#    external: 
+#      name: sonarqube-volume
+  sonardb-volume:
+#    external: 
+#      name: sonardb-volume
+
+
+
+services:
+
+#--------
+# SONAR
+#--------
+  sonar:
+    image: 'sonarqube:6.2'
+    networks:
+      - CI-Network
+    ports:
+      - '9000:9000'
+      - '9022:9022'
+    links:
+      - sonardb
+    depends_on:
+      - sonardb
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonardb:5432/sonar
+      - SONARQUBE_JDBC_USERNAME=sonar
+      - SONARQUBE_JDBC_PASSWORD=sonar
+    volumes:
+      - sonarqube-volume:/opt/sonarqube/conf
+      - sonarqube-volume:/opt/sonarqube/data
+      - sonarqube-volume:/opt/sonarqube/extensions
+      - sonarqube-volume:/opt/sonarqube/lib/bundled-plugins
+
+#--------
+# SONARDB
+#--------
+  sonardb:
+    image: 'postgres:9.6.2'
+    networks:
+      - CI-Network
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - sonardb-volume:/var/lib/postgresql/data
