@@ -5,3 +5,10 @@ div.slides img {
 div#mynetwork, div#tree_network {
   height: 500px;
 }
+
+.reveal blockquote {
+background: rgba(49, 47, 47, 0.70);
+}
+.reveal h2{
+  background: rgba(49, 47, 47, 0.70);
+}
