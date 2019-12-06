@@ -1,7 +1,8 @@
 # presentations
 Community presentations for general use.
 
-
+## CodeQuality
+Presentation about code quality and we should care about it.
 
 
 ---
